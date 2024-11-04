@@ -11,11 +11,11 @@ from typing import List, Dict, Tuple
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """
     Calculate the start and end index for a page of data.
-    
+
     Args:
         page (int): The page number (1-indexed).
         page_size (int): The number of items per page.
-    
+
     Returns:
         Tuple[int, int]: A tuple with the start and end indexes.
     """
@@ -52,12 +52,15 @@ class Server:
         Returns:
             List[List]: A list of rows for the specified page.
         """
-        assert isinstance(page, int) and page > 0, "Page must be a positive integer"
-        assert isinstance(page_size, int) and page_size > 0, "Page size must be a positive integer"
+        assert isinstance(page, int) and page > 0, \
+            "Page must be a positive integer"
+        assert isinstance(page_size, int) and page_size > 0, \
+            "Page size must be a positive integer"
 
         start_index, end_index = index_range(page, page_size)
         dataset = self.dataset()
-        return dataset[start_index:end_index] if start_index < len(dataset) else []
+        return dataset[start_index:end_index] \
+            if start_index < len(dataset) else []
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict:
         """
@@ -73,7 +76,7 @@ class Server:
         data = self.get_page(page, page_size)
         total_items = len(self.dataset())
         total_pages = math.ceil(total_items / page_size)
-        
+
         return {
             "page_size": len(data),
             "page": page,

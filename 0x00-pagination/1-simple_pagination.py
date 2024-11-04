@@ -52,8 +52,10 @@ class Server:
             List[List]: A list of rows for the specified page.
         """
         # Ensure page and page_size are valid integers greater than 0
-        assert isinstance(page, int) and page > 0, "Page must be a positive integer"
-        assert isinstance(page_size, int) and page_size > 0, "Page size must be a positive integer"
+        assert isinstance(page, int) and page > 0, \
+            "Page must be a positive integer"
+        assert isinstance(page_size, int) and page_size > 0, \
+            "Page size must be a positive integer"
 
         # Calculate start and end indexes using index_range function
         start_index, end_index = index_range(page, page_size)
@@ -62,4 +64,5 @@ class Server:
         dataset = self.dataset()
 
         # Return the appropriate slice, or an empty list if out of range
-        return dataset[start_index:end_index] if start_index < len(dataset) else []
+        return dataset[start_index:end_index] \
+            if start_index < len(dataset) else []
