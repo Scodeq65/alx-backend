@@ -1,5 +1,7 @@
-node_modules/
+8-main.js
+stock-manager
+node_modules
 redis-6.0.10/
 redis-6.0.10.tar.gz
-dump.rdb
 redis-6.0.10.tar.gz.1
+dump.rdb
